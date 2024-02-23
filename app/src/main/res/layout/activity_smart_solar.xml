@@ -5,35 +5,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SmartSolarActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/white"
+    >
 
-    <include layout="@layout/toolbal_layout"/>
+    <include layout="@layout/toolbar_layout"/>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:textColor="@color/black"
         android:paddingStart="10dp">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:textColor="@color/black"
             android:text="Mi instalacion"
             android:clickable="true"/>
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:textColor="@color/black"
             android:text="Energia"
             android:clickable="true"/>
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:textColor="@color/black"
             android:text="Detalles"
             android:clickable="true"/>
     </com.google.android.material.tabs.TabLayout>
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainer"
         android:paddingHorizontal="15dp"
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 </LinearLayout>

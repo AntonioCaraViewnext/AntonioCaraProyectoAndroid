@@ -1,52 +1,61 @@
 package com.example.antoniocaraproyectoandroid
 
 import android.content.Context
+import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
-import androidx.activity.ComponentActivity
+import android.widget.TextView
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.Observer
-import com.example.antoniocaraproyectoandroid.databinding.ActivityFacturaBinding
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.antoniocaraproyectoandroid.data.adapter.FacturaAdapter
-import com.example.antoniocaraproyectoandroid.data.model.FacturaModel
-import com.example.antoniocaraproyectoandroid.data.network.FacturasResponse
+import com.example.antoniocaraproyectoandroid.databinding.ActivityFacturaBinding
 import com.example.antoniocaraproyectoandroid.ui.viewmodel.FacturaViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.Date
 
 @AndroidEntryPoint
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFacturaBinding
     private val facturaViewModel: FacturaViewModel by viewModels()
+
+    //val app = applicationContext as FacturaApp
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFacturaBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val recyler : RecyclerView = binding.recyclerFactura
+        val recyler: RecyclerView = binding.recyclerFactura
         val adapter = FacturaAdapter()
-        val corner : ImageView = findViewById(R.id.cornerIcon)
 
-        corner.setImageResource(R.drawable.filtericon_3x)
+        //Cambiamos la toolbar para cuadrar con la activity
+        val imCorner: ImageView = findViewById(R.id.imCornerIcon)
+        imCorner.setImageResource(R.drawable.filtericon_3x)
+        val tvTituloActivity: TextView = findViewById(R.id.tvTituloActivity)
+        tvTituloActivity.text = resources.getText(R.string.facturas)
+        val tvAnteriorActivity: TextView = findViewById(R.id.tvAnteriorActivity)
+        tvAnteriorActivity.text = resources.getText(R.string.consumo)
 
-        if(isOnline(this)){
-            facturaViewModel.onCreate()
-            facturaViewModel.facturaModel.observe(this, Observer {
-                val facturas: FacturasResponse? = it
-                if (facturas != null) {
-                    adapter.RecyclerAdapter(it,this)
-                    recyler.layoutManager = LinearLayoutManager(this)
-                    recyler.adapter = adapter
-                }
-            })
-        }
+        imCorner.setOnClickListener { intentFiltros(this) }
+
+        facturaViewModel.onCreate()
+        facturaViewModel.facturaModel.observe(this, Observer {
+            adapter.RecyclerAdapter(it, this)
+            recyler.layoutManager = LinearLayoutManager(this)
+            recyler.adapter = adapter
+        })
 
     }
+}
+
+fun intentFiltros(context: Context) {
+    val intent = Intent(context, FiltrosActivity::class.java)
+    startActivity(context, intent, null)
 }
 
 //Metodo para saber si el usuario tiene conexion a internet

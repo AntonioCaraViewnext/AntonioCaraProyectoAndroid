@@ -16,8 +16,8 @@ class FacturaAdapter : RecyclerView.Adapter<FacturaAdapter.ViewHolder>() {
     var facturaModels: List<FacturaModel> = ArrayList()
     lateinit var context: Context
 
-    fun RecyclerAdapter(facturaModels: FacturasResponse, context: Context) {
-        this.facturaModels = facturaModels.facturas
+    fun RecyclerAdapter(facturaModels: List<FacturaModel>, context: Context) {
+        this.facturaModels = facturaModels
         this.context = context
     }
 

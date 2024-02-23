@@ -17,7 +17,7 @@ object NetworkModule {
     @Provides
     fun providerRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://viewnextandroid.wiremockapi.cloud/")
+            .baseUrl("https://viewnextandroid3.wiremockapi.cloud/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }

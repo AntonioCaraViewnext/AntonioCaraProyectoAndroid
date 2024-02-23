@@ -13,24 +13,18 @@ import javax.inject.Inject
 @HiltViewModel
 class FacturaViewModel @Inject constructor(
     private val getFacturasUseCase: GetFacturasUseCase
-) : ViewModel(){
-    val facturaModel = MutableLiveData<FacturasResponse>()
+) : ViewModel() {
+    val facturaModel = MutableLiveData<List<FacturaModel>>()
     val isLoading = MutableLiveData<Boolean>()
 
 
-    fun onCreate(){
-        viewModelScope.launch{
+    fun onCreate() {
+        viewModelScope.launch {
             isLoading.postValue(true)
             val result = getFacturasUseCase()
-            if (result != null) {
-                result.let {
-
-
-                            facturaModel.postValue(it)
-                            isLoading.postValue(false)
-
-                    }
-
+            result.let {
+                facturaModel.postValue(it)
+                isLoading.postValue(false)
             }
         }
     }

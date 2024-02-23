@@ -2,6 +2,7 @@ package com.example.antoniocaraproyectoandroid
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import com.example.antoniocaraproyectoandroid.databinding.ActivitySmartSolarBinding
 import com.example.antoniocaraproyectoandroid.smartsolarfragments.DetallesFragment
 import com.example.antoniocaraproyectoandroid.smartsolarfragments.EnergiaFragment
@@ -17,6 +18,11 @@ class SmartSolarActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         supportFragmentManager.beginTransaction().add(binding.fragmentContainer.id,InstalacionFragment.newInstance("","")).commit()
+
+        val tvTituloActivity: TextView = findViewById(R.id.tvTituloActivity)
+        tvTituloActivity.text = resources.getText(R.string.smart_solar)
+        val tvAnteriorActivity : TextView = findViewById(R.id.tvAnteriorActivity)
+        tvAnteriorActivity.text = resources.getText(R.string.atras)
 
         binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
