@@ -17,27 +17,27 @@
         android:theme="@style/Theme.AppCompat"
         tools:targetApi="31">
         <activity
-            android:name=".FiltrosActivity"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat"
-            />
-        <activity
-            android:name=".SmartSolarActivity"
-            android:exported="false"
-            android:theme="@style/ToolbarTheme">
-
-        </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.AppCompat">
+            android:name=".PantallaPrincipal"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".FiltrosActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name=".SmartSolarActivity"
+            android:exported="false"
+            android:theme="@style/ToolbarTheme"/>
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.AppCompat"/>
     </application>
 
 </manifest>

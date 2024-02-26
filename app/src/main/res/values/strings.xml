@@ -32,4 +32,7 @@
     <string name="tipo_autoconsumo">Tipo autoconsumo</string>
     <string name="compensaci_n_de_excedentes">Compensación de excedentes</string>
     <string name="potencia_de_instalaci_n">Potencia de instalación</string>
+    <string name="pantalla_principal_bienvenido">Bienvenido</string>
+    <string name="pantalla_principal_facturas">Facturas</string>
+    <string name="pantalla_principal_smart_solar">Smart Solar</string>
 </resources>

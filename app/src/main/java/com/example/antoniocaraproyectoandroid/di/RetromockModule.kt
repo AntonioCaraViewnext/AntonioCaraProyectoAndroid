@@ -1,6 +1,7 @@
 package com.example.antoniocaraproyectoandroid.di
 
 import co.infinum.retromock.Retromock
+import com.example.antoniocaraproyectoandroid.data.network.RetromockService
 import com.example.antoniocaraproyectoandroid.di.NetworkModule.providerRetrofit
 import dagger.Module
 import dagger.Provides
@@ -19,5 +20,11 @@ object RetromockModule {
             .retrofit(providerRetrofit())
             .build()
         return retromock
+    }
+
+    @Singleton
+    @Provides
+    fun provideRetromockService(retromock: Retromock): RetromockService{
+        return retromock.create(RetromockService::class.java)
     }
 }
