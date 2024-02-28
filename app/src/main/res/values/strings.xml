@@ -15,7 +15,7 @@
     <string name="filtros_300euros">300€</string>
     <string name="filtros_1euro">1€</string>
     <string name="filtros_por_estado">Por estado</string>
-    <string name="filtros_checkbox_pagada">Pagadas</string>
+    <string name="filtros_checkbox_pagada">Pagada</string>
     <string name="filtros_checkbox_anuladas">Anuladas</string>
     <string name="filtros_checkbox_cuota_fija">Cuota Fija</string>
     <string name="filtros_checkbox_pendiente_de_pago">Pendiente de pago</string>

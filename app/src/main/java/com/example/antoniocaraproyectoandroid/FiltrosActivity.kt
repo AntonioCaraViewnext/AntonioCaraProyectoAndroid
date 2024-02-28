@@ -3,7 +3,6 @@ package com.example.antoniocaraproyectoandroid
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.DatePickerDialog
-import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -14,9 +13,7 @@ import android.widget.ImageView
 import android.widget.SeekBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.core.content.edit
-import com.example.antoniocaraproyectoandroid.data.model.FacturaEntity
 import com.example.antoniocaraproyectoandroid.databinding.ActivityFiltrosBinding
 import java.util.Calendar
 
@@ -38,25 +35,56 @@ class FiltrosActivity : AppCompatActivity() {
         val imFlechaAnteriorActivity: ImageView = findViewById(R.id.imFlechaAnteriorActivity)
         imFlechaAnteriorActivity.visibility = View.GONE
 
+        val checkboxList: List<CheckBox> = listOf(
+            binding.cbPagada,
+            binding.cbAnuladas,
+            binding.cbCuotaFija,
+            binding.cbPendientePago,
+            binding.cbPlanPago
+        )
+
         sharedpreferences = getSharedPreferences("filtros", MODE_PRIVATE)
         imCorner.setOnClickListener {
             val intent = Intent(it.context, MainActivity::class.java)
-            intent.putExtra("importe",sharedpreferences.getInt("importe", 300))
-            intent.putExtra("cbPagadas",sharedpreferences.getBoolean("cbPagadas", false))
-            intent.putExtra("cbAnuladas",sharedpreferences.getBoolean("cbAnuladas", false))
-            intent.putExtra("cbCuotaFija",sharedpreferences.getBoolean("cbCuotaFija", false))
-            intent.putExtra("cbPendientePago",sharedpreferences.getBoolean("cbPendientePago", false))
-            intent.putExtra("cbPlanPago",sharedpreferences.getBoolean("cbPlanPago", false))
-            intent.putExtra("btnHasta",sharedpreferences.getString("btnHasta", resources.getResourceEntryName(R.string.filtros_dia_mes_anio)))
-            intent.putExtra("btnDesde",sharedpreferences.getString("btnDesde", resources.getResourceEntryName(R.string.filtros_dia_mes_anio)))
-            setResult(Activity.RESULT_OK,intent)
+            intent.putExtra("importe", sharedpreferences.getInt("importe", 300))
+
+            //Guardamos en un intent el String de los checkbox
+            for (cb in checkboxList) {
+                if (sharedpreferences.getBoolean(cb.resources.getResourceEntryName(cb.id), true)) {
+                    intent.putExtra(
+                        cb.resources.getResourceEntryName(cb.id) + "String",
+                        cb.text.toString()
+                    )
+                } else {
+                    intent.putExtra(cb.resources.getResourceEntryName(cb.id) + "String", " ")
+                }
+            }
+
+            intent.putExtra("cbPagada", sharedpreferences.getBoolean("cbPagada", true))
+            intent.putExtra("cbAnuladas", sharedpreferences.getBoolean("cbAnuladas", true))
+            intent.putExtra("cbCuotaFija", sharedpreferences.getBoolean("cbCuotaFija", true))
+            intent.putExtra("cbPendientePago", sharedpreferences.getBoolean("cbPendientePago", true))
+            intent.putExtra("cbPlanPago", sharedpreferences.getBoolean("cbPlanPago", true))
+            intent.putExtra(
+                "btnHasta",
+                sharedpreferences.getString("btnHasta",
+                    resources.getString(R.string.filtros_dia_mes_anio)
+                )
+            )
+            intent.putExtra(
+                "btnDesde",
+                sharedpreferences.getString("btnDesde",
+                    resources.getString(R.string.filtros_dia_mes_anio)
+                )
+            )
+            setResult(Activity.RESULT_OK, intent)
             finish()
         }
 
         val skImporte: SeekBar = binding.skImporte
         val tvImporte: TextView = binding.tvImporte
 
-        val cbPagadas: CheckBox = binding.cbPagadas
+        val cbPagada: CheckBox = binding.cbPagada
         val cbAnuladas: CheckBox = binding.cbAnuladas
         val cbCuotaFija: CheckBox = binding.cbCuotaFija
         val cbPendientePago: CheckBox = binding.cbPendientePago
@@ -69,46 +97,80 @@ class FiltrosActivity : AppCompatActivity() {
         val btnEliminar: Button = binding.btnEliminar
 
         btnDesde.setOnClickListener {
-            establecerFecha(it.context, btnDesde)
+            establecerFecha(btnDesde)
         }
 
         btnHasta.setOnClickListener {
-            establecerFecha(it.context, btnHasta)
+            establecerFecha(btnHasta)
         }
 
         btnAplicar.setOnClickListener {
             sharedpreferences.edit { putInt("importe", skImporte.progress) }
 
-            sharedpreferences.edit { putBoolean("cbPagadas", cbPagadas.isChecked) }
+            sharedpreferences.edit { putBoolean("cbPagada", cbPagada.isChecked) }
             sharedpreferences.edit { putBoolean("cbAnuladas", cbAnuladas.isChecked) }
             sharedpreferences.edit { putBoolean("cbCuotaFija", cbCuotaFija.isChecked) }
             sharedpreferences.edit { putBoolean("cbPendientePago", cbPendientePago.isChecked) }
             sharedpreferences.edit { putBoolean("cbPlanPago", cbPlanPago.isChecked) }
 
-            sharedpreferences.edit { putString("btnHasta", btnDesde.text.toString()) }
+            //Guardamos en un intent el String de los checkbox
+            for (cb in checkboxList) {
+                if (sharedpreferences.getBoolean(cb.resources.getResourceEntryName(cb.id), true)) {
+                    intent.putExtra(
+                        cb.resources.getResourceEntryName(cb.id) + "String",
+                        cb.text.toString()
+                    )
+                } else {
+                    intent.putExtra(cb.resources.getResourceEntryName(cb.id) + "String", " ")
+                }
+            }
+
             sharedpreferences.edit { putString("btnDesde", btnDesde.text.toString()) }
+            sharedpreferences.edit { putString("btnHasta", btnHasta.text.toString()) }
 
         }
 
         btnEliminar.setOnClickListener {
             sharedpreferences.edit { putInt("importe", 300) }
-            tvImporte.text = "1€"
-            skImporte.progress = 1
+            tvImporte.text = "300€"
+            skImporte.progress = 300
 
-            sharedpreferences.edit { putBoolean("cbPagadas", false) }
-            sharedpreferences.edit { putBoolean("cbAnuladas", false) }
-            sharedpreferences.edit { putBoolean("cbCuotaFija", false) }
-            sharedpreferences.edit { putBoolean("cbPendientePago", false) }
-            sharedpreferences.edit { putBoolean("cbPlanPago", false) }
+            sharedpreferences.edit { putBoolean("cbPagada", true) }
+            sharedpreferences.edit { putBoolean("cbAnuladas", true) }
+            sharedpreferences.edit { putBoolean("cbCuotaFija", true) }
+            sharedpreferences.edit { putBoolean("cbPendientePago", true) }
+            sharedpreferences.edit { putBoolean("cbPlanPago", true) }
 
-            cbPagadas.isChecked = false
-            cbAnuladas.isChecked = false
-            cbCuotaFija.isChecked = false
-            cbPendientePago.isChecked = false
-            cbPlanPago.isChecked = false
+            //Guardamos en un intent el String de los checkbox
+            for (cb in checkboxList) {
+                if (sharedpreferences.getBoolean(cb.resources.getResourceEntryName(cb.id), true)) {
+                    intent.putExtra(
+                        cb.resources.getResourceEntryName(cb.id) + "String",
+                        cb.text.toString()
+                    )
+                } else {
+                    intent.putExtra(cb.resources.getResourceEntryName(cb.id) + "String", " ")
+                }
+            }
 
-            sharedpreferences.edit { putString("btnDesde",resources.getString(R.string.filtros_dia_mes_anio))}
-            sharedpreferences.edit { putString("btnHasta",resources.getString(R.string.filtros_dia_mes_anio))}
+            cbPagada.isChecked = true
+            cbAnuladas.isChecked = true
+            cbCuotaFija.isChecked = true
+            cbPendientePago.isChecked = true
+            cbPlanPago.isChecked = true
+
+            sharedpreferences.edit {
+                putString(
+                    "btnDesde",
+                    resources.getString(R.string.filtros_dia_mes_anio)
+                )
+            }
+            sharedpreferences.edit {
+                putString(
+                    "btnHasta",
+                    resources.getString(R.string.filtros_dia_mes_anio)
+                )
+            }
 
             btnDesde.text = resources.getString(R.string.filtros_dia_mes_anio)
             btnHasta.text = resources.getString(R.string.filtros_dia_mes_anio)
@@ -140,7 +202,7 @@ class FiltrosActivity : AppCompatActivity() {
         val skImporte: SeekBar = binding.skImporte
         val tvImporte: TextView = binding.tvImporte
         val checkboxList: List<CheckBox> = listOf(
-            binding.cbPagadas,
+            binding.cbPagada,
             binding.cbAnuladas,
             binding.cbCuotaFija,
             binding.cbPendientePago,
@@ -155,30 +217,52 @@ class FiltrosActivity : AppCompatActivity() {
 
         for (checkbox in checkboxList) {
             checkbox.isChecked =
-                sharedpreferences.getBoolean(resources.getResourceEntryName(checkbox.id), false)
+                sharedpreferences.getBoolean(resources.getResourceEntryName(checkbox.id), true)
         }
 
-        btnDesde.text = sharedpreferences.getString("btnDesde",resources.getString(R.string.filtros_dia_mes_anio))
-        btnHasta.text = sharedpreferences.getString("btnHasta",resources.getString(R.string.filtros_dia_mes_anio))
+        btnDesde.text = sharedpreferences.getString(
+            "btnDesde",
+            resources.getString(R.string.filtros_dia_mes_anio)
+        )
+        btnHasta.text = sharedpreferences.getString(
+            "btnHasta",
+            resources.getString(R.string.filtros_dia_mes_anio)
+        )
     }
 
     //Establecemos la fecha con un DatePickerDialog
-    private fun establecerFecha(context: Context, btnDesde: Button) {
-        val c = Calendar.getInstance()
-        val year = c.get(Calendar.YEAR)
-        val month = c.get(Calendar.MONTH)
-        val day = c.get(Calendar.DAY_OF_MONTH)
-        val dpd = DatePickerDialog(
-            context,
-            { _, year, _, dayOfMonth ->
-                val texto = "$dayOfMonth / $month / $year"
-                btnDesde.text = texto
+    private fun establecerFecha(btnDesde: Button) {
+        // Get the current date
+        val calendar = Calendar.getInstance()
+        val year = calendar.get(Calendar.YEAR)
+        val month = calendar.get(Calendar.MONTH)
+        val dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH)
 
+        val datePickerDialog = DatePickerDialog(
+            this, { _, anio, mes, dia ->
+
+                val diaString : String
+
+                diaString = if(dia<10){
+                    "0$dia"
+                }else{
+                    dia.toString()
+                }
+                val mesString : String
+
+                mesString = if(mes<10){
+                    "0${mes+1}"
+                }else{
+                    (mes+1).toString()
+                }
+
+                val selectedDate = "$diaString/$mesString/$anio"
+
+                btnDesde.text = selectedDate
             },
-            year,
-            month,
-            day
+            year, month, dayOfMonth
         )
-        dpd.show()
+
+        datePickerDialog.show()
     }
 }

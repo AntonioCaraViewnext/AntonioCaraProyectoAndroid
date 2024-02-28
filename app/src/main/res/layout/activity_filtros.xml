@@ -185,7 +185,7 @@
                 android:orientation="vertical"
                 >
                 <CheckBox
-                    android:id="@+id/cbPagadas"
+                    android:id="@+id/cbPagada"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"

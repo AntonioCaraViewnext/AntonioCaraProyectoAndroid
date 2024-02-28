@@ -30,14 +30,10 @@ class FacturaViewModel @Inject constructor(
         }
     }
 
-    fun filtros(importe: Int?, listaCheckBox : List<Boolean?>,
-                btnDesde : String?, btnHasta : String?){
-        val listaCheckBoxTrue : MutableList<Boolean> = mutableListOf()
-        for (cb in listaCheckBox){
-            if(cb == true){
-                listaCheckBoxTrue.add(cb)
-            }
-        }
+    suspend fun filtros(importe: Int?, listaCheckBox : List<String?>,
+                        btnDesde : String?, btnHasta : String?){
+        val listaCheckBoxMutable = listaCheckBox.toMutableList()
+
         val infoBtnDesde : String
         val infoBtnHasta : String
 
@@ -50,9 +46,10 @@ class FacturaViewModel @Inject constructor(
         if(("dia/mes/año" != btnHasta) && (btnHasta !== null)){
             infoBtnHasta = btnHasta
         }else{
-            infoBtnHasta = "01/01/1800"
+            infoBtnHasta = "01/01/3000"
         }
-
-
+        println(infoBtnDesde+" "+infoBtnHasta)
+        val result = getFacturasFiltradasUseCase.invoke(importe,listaCheckBoxMutable,infoBtnDesde,infoBtnHasta)
+        facturaModel.postValue(result)
     }
 }

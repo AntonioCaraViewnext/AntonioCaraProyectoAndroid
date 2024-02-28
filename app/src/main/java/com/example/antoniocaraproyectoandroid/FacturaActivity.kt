@@ -10,12 +10,14 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.antoniocaraproyectoandroid.data.adapter.FacturaAdapter
 import com.example.antoniocaraproyectoandroid.databinding.ActivityFacturaBinding
 import com.example.antoniocaraproyectoandroid.ui.viewmodel.FacturaViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
@@ -55,17 +57,16 @@ class MainActivity : AppCompatActivity() {
 
     var activityResultLauncher =registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
-            println("Entro en activity result ok")
             val importe = result.data?.getIntExtra("importe", 300)
-            val cbPagadas = result.data?.getBooleanExtra("cbPagadas",false)
-            val cbAnuladas = result.data?.getBooleanExtra("cbAnuladas",false)
-            val cbCuotaFija = result.data?.getBooleanExtra("cbCuotaFija",false)
-            val cbPendientePago = result.data?.getBooleanExtra("cbPendientePago",false)
-            val cbPlanPago = result.data?.getBooleanExtra("cbPlanPago",false)
+            val cbPagada = result.data?.getStringExtra("cbPagadaString")
+            val cbAnuladas = result.data?.getStringExtra("cbAnuladasString")
+            val cbCuotaFija = result.data?.getStringExtra("cbCuotaFijaString")
+            val cbPendientePago = result.data?.getStringExtra("cbPendientePagoString")
+            val cbPlanPago = result.data?.getStringExtra("cbPlanPagoString")
             val btnDesde = result.data?.getStringExtra("btnDesde")
             val btnHasta = result.data?.getStringExtra("btnHasta")
-            val listaCheckBox : List<Boolean?> = listOf(cbPagadas,cbAnuladas,cbCuotaFija,cbPendientePago,cbPlanPago)
-            facturaViewModel.filtros(importe,listaCheckBox,btnDesde,btnHasta)
+            val listaCheckBox : List<String?> = listOf(cbPagada,cbAnuladas,cbCuotaFija,cbPendientePago,cbPlanPago)
+            lifecycleScope.launch { facturaViewModel.filtros(importe,listaCheckBox,btnDesde,btnHasta) }
         }else{
             println("Fallo")
         }

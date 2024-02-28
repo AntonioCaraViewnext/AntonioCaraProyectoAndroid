@@ -47,6 +47,10 @@ class FacturaRepository @Inject constructor(
         facturaDao.nukeTable()
     }
 
+    suspend fun filtros(importe : Int?, listaCheckBoxMutalbe : MutableList<String?>,infoBtnDesde : String? ,infoBtnHasta : String?) : MutableList<FacturaEntity>{
+        println("Entrando $infoBtnDesde $infoBtnHasta")
+        return facturaDao.filtro(importe, listaCheckBoxMutalbe, infoBtnDesde, infoBtnHasta)
+    }
 
     //Metodo para saber si el usuario tiene conexion a internet
     suspend fun isOnline(context: Context): Boolean {
