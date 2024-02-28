@@ -23,17 +23,25 @@ class FacturaRepository @Inject constructor(
     private val context: Context
 ){
     private lateinit var sharedpreferences: SharedPreferences
-    suspend fun getAllFacturas(): List<FacturaModel>{
-        return if(isOnline(context)){
-            val response = api.getFacturas()
-            facturaProvider.facturas = response
-            response.facturas
+    suspend fun getAllFacturas(switchRetrofit: Boolean): List<FacturaModel>{
+        return if(switchRetrofit){
+            if(isOnline(context)){
+                val response = api.getFacturas()
+                facturaProvider.facturas = response
+                response.facturas
+            }else{
+                activarRetromock()
+            }
         }else{
-            val serviceResponse = service.getAllFacturas()
-            val resposeFacturaRetromock = FacturasResponse(serviceResponse.body()?.facturas ?: emptyList())
-            facturaProvider.facturas = resposeFacturaRetromock
-            resposeFacturaRetromock.facturas
+            activarRetromock()
         }
+    }
+
+    suspend fun activarRetromock() : List<FacturaModel>{
+        val serviceResponse = service.getAllFacturas()
+        val resposeFacturaRetromock = FacturasResponse(serviceResponse.body()?.facturas ?: emptyList())
+        facturaProvider.facturas = resposeFacturaRetromock
+        return resposeFacturaRetromock.facturas
     }
 
     suspend fun getAllFacturasRoom(): MutableList<FacturaEntity> {

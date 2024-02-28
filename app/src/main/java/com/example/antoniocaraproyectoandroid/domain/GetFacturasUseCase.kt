@@ -8,8 +8,8 @@ import javax.inject.Inject
 class GetFacturasUseCase @Inject constructor(
     private val repository: FacturaRepository
 ) {
-    suspend operator fun invoke():List<FacturaModel>{
-        val facturas = repository.getAllFacturas()
+    suspend operator fun invoke(switchRetrofit: Boolean):List<FacturaModel>{
+        val facturas = repository.getAllFacturas(switchRetrofit)
         return if(facturas.isNotEmpty()){
             repository.nukeTable()
             repository.insertFactura(conversionModelEntity(facturas))

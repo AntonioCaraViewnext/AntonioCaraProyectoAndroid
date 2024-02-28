@@ -29,6 +29,9 @@
                 android:text="ES0021000000001994LJ1FA00"
                 android:drawableRight="@drawable/ic_back_arrow_icon"
                 android:layout_marginTop="5dp"
+                android:inputType="none"
+                android:focusable="false"
+                android:clickable="false"
                 />
         </LinearLayout>
         <LinearLayout
@@ -49,6 +52,9 @@
                 android:text="No hemos recibido ninguna solicitud de autoconsumo"
                 android:drawableRight="@drawable/ic_back_arrow_icon"
                 android:layout_marginTop="5dp"
+                android:inputType="none"
+                android:focusable="false"
+                android:clickable="false"
                 />
         </LinearLayout>
         <LinearLayout
@@ -69,6 +75,9 @@
                 android:text="Con excedentes y compensación individual - Consumo"
                 android:drawableRight="@drawable/ic_back_arrow_icon"
                 android:layout_marginTop="5dp"
+                android:inputType="none"
+                android:focusable="false"
+                android:clickable="false"
                 />
         </LinearLayout>
         <LinearLayout
@@ -89,6 +98,9 @@
                 android:text="Precio PVC"
                 android:drawableRight="@drawable/ic_back_arrow_icon"
                 android:layout_marginTop="5dp"
+                android:inputType="none"
+                android:focusable="false"
+                android:clickable="false"
                 />
         </LinearLayout>
         <LinearLayout
@@ -109,6 +121,9 @@
                 android:text="5kWp"
                 android:drawableRight="@drawable/ic_back_arrow_icon"
                 android:layout_marginTop="5dp"
+                android:inputType="none"
+                android:focusable="false"
+                android:clickable="false"
                 />
         </LinearLayout>
     </LinearLayout>

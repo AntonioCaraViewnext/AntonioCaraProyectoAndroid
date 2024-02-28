@@ -19,10 +19,10 @@ class FacturaViewModel @Inject constructor(
     val isLoading = MutableLiveData<Boolean>()
 
 
-    fun onCreate() {
+    fun onCreate(switchRetrofit : Boolean) {
         viewModelScope.launch {
             isLoading.postValue(true)
-            val result = getFacturasUseCase()
+            val result = getFacturasUseCase(switchRetrofit)
             result.let {
                 facturaModel.postValue(it)
                 isLoading.postValue(false)
@@ -31,7 +31,7 @@ class FacturaViewModel @Inject constructor(
     }
 
     suspend fun filtros(importe: Int?, listaCheckBox : List<String?>,
-                        btnDesde : String?, btnHasta : String?){
+                        btnDesde : String?, btnHasta : String?, switchRetrofit: Boolean){
         val listaCheckBoxMutable = listaCheckBox.toMutableList()
 
         val infoBtnDesde : String
@@ -49,7 +49,7 @@ class FacturaViewModel @Inject constructor(
             infoBtnHasta = "01/01/3000"
         }
         println(infoBtnDesde+" "+infoBtnHasta)
-        val result = getFacturasFiltradasUseCase.invoke(importe,listaCheckBoxMutable,infoBtnDesde,infoBtnHasta)
+        val result = getFacturasFiltradasUseCase.invoke(importe,listaCheckBoxMutable,infoBtnDesde,infoBtnHasta, switchRetrofit)
         facturaModel.postValue(result)
     }
 }

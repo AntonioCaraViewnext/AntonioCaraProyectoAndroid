@@ -11,7 +11,7 @@ interface RetromockService {
     @MockResponse(body = "{\"facturas\": [\n" +
             "    {\n" +
             "      \"descEstado\": \"Pendiente de pago\",\n" +
-            "      \"importeOrdenacion\": 1.5600000000000001,\n" +
+            "      \"importeOrdenacion\": 1.5800000000000001,\n" +
             "      \"fecha\": \"07/02/2019\"\n" +
             "    },\n" +
             "    {\n" +

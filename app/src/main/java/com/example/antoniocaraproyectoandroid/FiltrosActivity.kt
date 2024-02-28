@@ -44,6 +44,7 @@ class FiltrosActivity : AppCompatActivity() {
         )
 
         sharedpreferences = getSharedPreferences("filtros", MODE_PRIVATE)
+
         imCorner.setOnClickListener {
             val intent = Intent(it.context, MainActivity::class.java)
             intent.putExtra("importe", sharedpreferences.getInt("importe", 300))

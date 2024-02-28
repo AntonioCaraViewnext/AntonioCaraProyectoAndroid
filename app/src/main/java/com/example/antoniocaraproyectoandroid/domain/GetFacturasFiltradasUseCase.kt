@@ -8,8 +8,8 @@ import javax.inject.Inject
 class GetFacturasFiltradasUseCase @Inject constructor(
     private val repository: FacturaRepository
 ){
-    suspend operator fun invoke(importe : Int?,listaCheckBoxMutalbe : MutableList<String?>,infoBtnDesde : String? ,infoBtnHasta : String?):List<FacturaModel>{
-        val facturas = repository.getAllFacturas()
+    suspend operator fun invoke(importe : Int?,listaCheckBoxMutalbe : MutableList<String?>,infoBtnDesde : String? ,infoBtnHasta : String?,switchRetrofit: Boolean):List<FacturaModel>{
+        val facturas = repository.getAllFacturas(switchRetrofit)
         return if(facturas.isNotEmpty()){
             repository.nukeTable()
             repository.insertFactura(conversionModelEntity(facturas))

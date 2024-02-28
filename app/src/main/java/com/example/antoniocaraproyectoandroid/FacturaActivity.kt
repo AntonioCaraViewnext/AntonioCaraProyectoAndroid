@@ -44,7 +44,8 @@ class MainActivity : AppCompatActivity() {
 
         imCorner.setOnClickListener { intentFiltros(this) }
 
-        facturaViewModel.onCreate()
+        val switchRetrofit = intent.getBooleanExtra("switchRetrofit" , false)
+        facturaViewModel.onCreate(switchRetrofit)
         facturaViewModel.facturaModel.observe(this, Observer {
             adapter.RecyclerAdapter(it, this)
             recyler.layoutManager = LinearLayoutManager(this)
@@ -66,7 +67,8 @@ class MainActivity : AppCompatActivity() {
             val btnDesde = result.data?.getStringExtra("btnDesde")
             val btnHasta = result.data?.getStringExtra("btnHasta")
             val listaCheckBox : List<String?> = listOf(cbPagada,cbAnuladas,cbCuotaFija,cbPendientePago,cbPlanPago)
-            lifecycleScope.launch { facturaViewModel.filtros(importe,listaCheckBox,btnDesde,btnHasta) }
+            val switchRetrofit = intent.getBooleanExtra("switchRetrofit" , false)
+            lifecycleScope.launch { facturaViewModel.filtros(importe,listaCheckBox,btnDesde,btnHasta,switchRetrofit) }
         }else{
             println("Fallo")
         }
