@@ -7,7 +7,7 @@ import java.util.Date
 @Entity(tableName = "factura")
 data class FacturaEntity(
     @PrimaryKey
-    val fecha: Date,
+    val fecha: String,
     val importeOrdenacion: Double,
     val descEstado: String
 )

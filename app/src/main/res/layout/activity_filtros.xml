@@ -22,7 +22,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/fecha_emision"
+                    android:text="@string/filtros_fecha_emision"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     />
@@ -41,14 +41,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/desde"
+                        android:text="@string/filtros_desde"
                         android:textColor="@color/darkGray"
                         />
                     <Button
                         android:id="@+id/btnDesde"
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
-                        android:text="@string/dia_mes_a_o"
+                        android:text="@string/filtros_dia_mes_anio"
                         android:textColor="@color/black"
                         android:padding="10dp"
                         android:textSize="5pt"
@@ -63,14 +63,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/hasta"
+                        android:text="@string/filtros_hasta"
                         android:textColor="@color/darkGray"
                         />
                     <Button
                         android:id="@+id/btnHasta"
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
-                        android:text="@string/dia_mes_a_o"
+                        android:text="@string/filtros_dia_mes_anio"
                         android:textColor="@color/black"
                         android:padding="10dp"
                         android:textSize="5pt"
@@ -95,7 +95,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/fecha_emision"
+                    android:text="@string/filtros_importe"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     />
@@ -125,7 +125,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/darkGray"
-                        android:text="@string/_1"
+                        android:text="@string/filtros_1euro"
                         />
                 </LinearLayout>
                 <LinearLayout
@@ -138,7 +138,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/darkGray"
-                        android:text="@string/_300"
+                        android:text="@string/filtros_300euros"
                         />
                 </LinearLayout>
             </LinearLayout>
@@ -175,7 +175,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/por_estado"
+                android:text="@string/filtros_por_estado"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 />
@@ -185,38 +185,43 @@
                 android:orientation="vertical"
                 >
                 <CheckBox
+                    android:id="@+id/cbPagadas"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="@string/pagadas"
+                    android:text="@string/filtros_checkbox_pagada"
                     android:buttonTint="@color/gray"
                     />
                 <CheckBox
+                    android:id="@+id/cbAnuladas"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="@string/anuladas"
+                    android:text="@string/filtros_checkbox_anuladas"
                     android:buttonTint="@color/gray"
                     />
                 <CheckBox
+                    android:id="@+id/cbCuotaFija"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="@string/cuota_fija"
+                    android:text="@string/filtros_checkbox_cuota_fija"
                     android:buttonTint="@color/gray"
                     />
                 <CheckBox
+                    android:id="@+id/cbPendientePago"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="@string/pendiente_de_pago"
+                    android:text="@string/filtros_checkbox_pendiente_de_pago"
                     android:buttonTint="@color/gray"
                     />
                 <CheckBox
+                    android:id="@+id/cbPlanPago"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="@string/plan_de_pago"
+                    android:text="@string/filtros_checkbox_plan_de_pago"
                     android:buttonTint="@color/gray"
                     />
             </LinearLayout>
@@ -229,19 +234,21 @@
             android:orientation="vertical"
             >
             <Button
+                android:id="@+id/btnAplicar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/background_button_green"
                 android:textColor="@color/white"
-                android:text="@string/aplicar"
+                android:text="@string/filtros_aplicar"
                 />
             <Button
+                android:id="@+id/btnEliminar"
                 android:layout_margin="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:textColor="@color/green"
-                android:text="@string/eliminar_filtros"
+                android:text="@string/filtros_eliminar"
                 />
         </LinearLayout>
     </LinearLayout>

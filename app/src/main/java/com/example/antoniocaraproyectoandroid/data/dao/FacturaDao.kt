@@ -16,4 +16,7 @@ interface FacturaDao {
 
     @Query("DELETE FROM factura")
     suspend fun nukeTable()
+
+    @Query("SELECT * FROM factura WHERE factura.importeOrdenacion <= :importe")
+    suspend fun filtro(importe : Int) : MutableList<FacturaEntity>
 }

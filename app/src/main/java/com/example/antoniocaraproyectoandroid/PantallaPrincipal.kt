@@ -18,7 +18,6 @@ class PantallaPrincipal : AppCompatActivity() {
         val btnSmartSolar : Button = binding.btnSmartSolar
 
         btnFacturas.setOnClickListener{
-            println("Hola")
             val intent = Intent(it.context, MainActivity::class.java)
             startActivity(intent)
         }

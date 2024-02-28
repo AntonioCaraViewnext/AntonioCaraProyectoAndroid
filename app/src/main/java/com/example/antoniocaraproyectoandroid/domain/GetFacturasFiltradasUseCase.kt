@@ -5,14 +5,15 @@ import com.example.antoniocaraproyectoandroid.data.model.FacturaEntity
 import com.example.antoniocaraproyectoandroid.data.model.FacturaModel
 import javax.inject.Inject
 
-class GetFacturasUseCase @Inject constructor(
+class GetFacturasFiltradasUseCase @Inject constructor(
     private val repository: FacturaRepository
-) {
-    suspend operator fun invoke():List<FacturaModel>{
+){
+    suspend operator fun invoke(importe : Int):List<FacturaModel>{
         val facturas = repository.getAllFacturas()
         return if(facturas.isNotEmpty()){
             repository.nukeTable()
             repository.insertFactura(conversionModelEntity(facturas))
+            repository
             facturas
         }else{
             val conversorLista = conversionEntityModel(repository.getAllFacturasRoom().toList())
@@ -35,5 +36,4 @@ class GetFacturasUseCase @Inject constructor(
         }
         return lista.toList()
     }
-
 }
