@@ -1,5 +1,6 @@
 package com.example.antoniocaraproyectoandroid
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
@@ -22,7 +23,12 @@ class SmartSolarActivity : AppCompatActivity() {
         val tvTituloActivity: TextView = findViewById(R.id.tvTituloActivity)
         tvTituloActivity.text = resources.getText(R.string.smart_solar)
         val tvAnteriorActivity : TextView = findViewById(R.id.tvAnteriorActivity)
-        tvAnteriorActivity.text = resources.getText(R.string.atras)
+        tvAnteriorActivity.text = resources.getText(R.string.smart_solar_atras)
+
+        tvAnteriorActivity.setOnClickListener{
+            val intent = Intent(it.context, PantallaPrincipal::class.java)
+            startActivity(intent)
+        }
 
         binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
@@ -36,6 +42,9 @@ class SmartSolarActivity : AppCompatActivity() {
                 }
 
             }
+
+
+
             override fun onTabUnselected(tab: TabLayout.Tab) {}
             override fun onTabReselected(tab: TabLayout.Tab) {}
         })

@@ -31,7 +31,7 @@ class FiltrosActivity : AppCompatActivity() {
         val imCorner: ImageView = findViewById(R.id.imCornerIcon)
         imCorner.setImageResource(R.drawable.close_icon)
         val tvTituloActivity: TextView = findViewById(R.id.tvTituloActivity)
-        tvTituloActivity.text = resources.getText(R.string.filros)
+        tvTituloActivity.text = resources.getText(R.string.titulo_filtros)
         val imFlechaAnteriorActivity: ImageView = findViewById(R.id.imFlechaAnteriorActivity)
         imFlechaAnteriorActivity.visibility = View.GONE
 

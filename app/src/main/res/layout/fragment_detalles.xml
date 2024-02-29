@@ -21,41 +21,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/darkGray"
-                android:text="@string/cau_c_digo_autoconsumo"
+                android:text="@string/smart_solar_detalles_cau"
                 />
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="ES0021000000001994LJ1FA00"
-                android:drawableRight="@drawable/ic_back_arrow_icon"
+                android:textSize="18sp"
+                android:textColor="@color/black"
                 android:layout_marginTop="5dp"
-                android:inputType="none"
-                android:focusable="false"
-                android:clickable="false"
                 />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingTop="10dp"
-            >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/darkGray"
-                android:text="@string/estado_solicitud_alta_consumidor"
-                />
-            <EditText
+            <View
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="No hemos recibido ninguna solicitud de autoconsumo"
-                android:drawableRight="@drawable/ic_back_arrow_icon"
-                android:layout_marginTop="5dp"
-                android:inputType="none"
-                android:focusable="false"
-                android:clickable="false"
-                />
+                android:layout_height="3dp"
+                android:background="@color/gray" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -67,18 +48,64 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/darkGray"
-                android:text="@string/tipo_autoconsumo"
+                android:text="@string/smart_solar_detalles_estado_solicitud_alta_consumidor"
                 />
-            <EditText
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_weight="6"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="No hemos recibido ninguna solicitud de autoconsumo"
+                    android:layout_marginTop="5dp"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    />
+                <ImageView
+                    android:id="@+id/imgInfo"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/icon_info"
+                    android:layout_gravity="center"
+                    android:clickable="true"
+                    />
+            </LinearLayout>
+            <View
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="@color/gray" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="10dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/darkGray"
+                android:text="@string/smart_solar_detalles_tipo_autoconsumo"
+                />
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Con excedentes y compensación individual - Consumo"
-                android:drawableRight="@drawable/ic_back_arrow_icon"
                 android:layout_marginTop="5dp"
-                android:inputType="none"
-                android:focusable="false"
-                android:clickable="false"
+                android:textSize="18sp"
+                android:textColor="@color/black"
                 />
+            <View
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="@color/gray" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -90,18 +117,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/darkGray"
-                android:text="@string/compensaci_n_de_excedentes"
+                android:text="@string/smart_solar_detalles_compensacion_de_excedentes"
                 />
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Precio PVC"
-                android:drawableRight="@drawable/ic_back_arrow_icon"
                 android:layout_marginTop="5dp"
-                android:inputType="none"
-                android:focusable="false"
-                android:clickable="false"
+                android:textSize="18sp"
+                android:textColor="@color/black"
                 />
+            <View
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="@color/gray" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -113,18 +144,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/darkGray"
-                android:text="@string/potencia_de_instalaci_n"
+                android:text="@string/smart_solar_detalles_potencia_de_instalacion"
                 />
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="5kWp"
-                android:drawableRight="@drawable/ic_back_arrow_icon"
                 android:layout_marginTop="5dp"
-                android:inputType="none"
-                android:focusable="false"
-                android:clickable="false"
+                android:textSize="18sp"
+                android:textColor="@color/black"
                 />
+            <View
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="@color/gray" />
         </LinearLayout>
     </LinearLayout>
 

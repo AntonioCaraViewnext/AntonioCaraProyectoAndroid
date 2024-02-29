@@ -5,12 +5,13 @@
     android:layout_height="match_parent"
     tools:context=".smartsolarfragments.EnergiaFragment"
     android:background="@color/white"
+    android:paddingTop="100dp"
     >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:layout_gravity="center"
         android:orientation="vertical"
         >
         <ImageView
@@ -23,8 +24,9 @@
             android:layout_height="wrap_content"
             android:paddingStart="60dp"
             android:paddingEnd="60dp"
+            android:paddingTop="50dp"
             android:textColor="@color/black"
-            android:text="@string/produccion_solar"
+            android:text="@string/smart_solar_energia_produccion_solar"
             />
     </LinearLayout>
 

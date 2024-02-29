@@ -38,9 +38,14 @@ class MainActivity : AppCompatActivity() {
         val imCorner: ImageView = findViewById(R.id.imCornerIcon)
         imCorner.setImageResource(R.drawable.filtericon_3x)
         val tvTituloActivity: TextView = findViewById(R.id.tvTituloActivity)
-        tvTituloActivity.text = resources.getText(R.string.facturas)
+        tvTituloActivity.text = resources.getText(R.string.titulo_facturas)
         val tvAnteriorActivity: TextView = findViewById(R.id.tvAnteriorActivity)
         tvAnteriorActivity.text = resources.getText(R.string.consumo)
+
+        tvAnteriorActivity.setOnClickListener{
+            val intent = Intent(it.context, PantallaPrincipal::class.java)
+            startActivity(intent)
+        }
 
         imCorner.setOnClickListener { intentFiltros(this) }
 

@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:text="@string/instalacion_fotovoltatica" />
+            android:text="@string/smart_solar_instalacion_instalacion_fotovoltatica" />
         <LinearLayout
             android:paddingTop="50dp"
             android:layout_width="wrap_content"
@@ -27,7 +27,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/autoconsumo"
+                android:text="@string/smart_solar_instalacion_autoconsumo"
                 android:textColor="@color/black"
                 />
             <TextView
