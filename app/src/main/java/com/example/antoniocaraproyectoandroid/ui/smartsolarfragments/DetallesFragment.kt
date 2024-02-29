@@ -1,4 +1,4 @@
-package com.example.antoniocaraproyectoandroid.smartsolarfragments
+package com.example.antoniocaraproyectoandroid.ui.smartsolarfragments
 
 import android.app.AlertDialog
 import android.os.Bundle

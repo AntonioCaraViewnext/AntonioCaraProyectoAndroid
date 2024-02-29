@@ -1,4 +1,4 @@
-package com.example.antoniocaraproyectoandroid.di
+package com.example.antoniocaraproyectoandroid.data.di
 
 import android.content.Context
 import androidx.room.Room

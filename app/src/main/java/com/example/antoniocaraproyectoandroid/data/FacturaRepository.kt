@@ -5,7 +5,6 @@ import android.content.SharedPreferences
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
 import com.example.antoniocaraproyectoandroid.data.dao.FacturaDao
 import com.example.antoniocaraproyectoandroid.data.model.FacturaEntity
 import com.example.antoniocaraproyectoandroid.data.model.FacturaModel
@@ -55,9 +54,9 @@ class FacturaRepository @Inject constructor(
         facturaDao.nukeTable()
     }
 
-    suspend fun filtros(importe : Int?, listaCheckBoxMutalbe : MutableList<String?>,infoBtnDesde : String? ,infoBtnHasta : String?) : MutableList<FacturaEntity>{
+    suspend fun filtrarFacturas(importe : Int?, listaCheckBoxMutable : MutableList<String?>, infoBtnDesde : String?, infoBtnHasta : String?) : MutableList<FacturaEntity>{
         println("Entrando $infoBtnDesde $infoBtnHasta")
-        return facturaDao.filtro(importe, listaCheckBoxMutalbe, infoBtnDesde, infoBtnHasta)
+        return facturaDao.filtro(importe, listaCheckBoxMutable, infoBtnDesde, infoBtnHasta)
     }
 
     //Metodo para saber si el usuario tiene conexion a internet

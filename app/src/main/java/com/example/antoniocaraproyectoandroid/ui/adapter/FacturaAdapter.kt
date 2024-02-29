@@ -1,4 +1,4 @@
-package com.example.antoniocaraproyectoandroid.data.adapter
+package com.example.antoniocaraproyectoandroid.ui.adapter
 
 import android.app.AlertDialog
 import android.content.Context
@@ -21,7 +21,7 @@ class FacturaAdapter : RecyclerView.Adapter<FacturaAdapter.ViewHolder>() {
         this.context = context
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FacturaAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         return ViewHolder(layoutInflater.inflate(R.layout.facturas_recycle, parent, false))
     }

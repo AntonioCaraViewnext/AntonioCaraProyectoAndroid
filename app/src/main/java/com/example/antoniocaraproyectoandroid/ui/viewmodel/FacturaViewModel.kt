@@ -48,7 +48,7 @@ class FacturaViewModel @Inject constructor(
         }else{
             infoBtnHasta = "01/01/3000"
         }
-        println(infoBtnDesde+" "+infoBtnHasta)
+
         val result = getFacturasFiltradasUseCase.invoke(importe,listaCheckBoxMutable,infoBtnDesde,infoBtnHasta, switchRetrofit)
         facturaModel.postValue(result)
     }

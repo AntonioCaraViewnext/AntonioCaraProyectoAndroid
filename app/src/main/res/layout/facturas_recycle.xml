@@ -3,9 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:paddingTop="10dp"
-    >
+    android:paddingTop="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -49,7 +49,7 @@
                 android:id="@+id/tvCoste"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
+                tools:text="appp"
                 android:textSize="25dp"
                 android:paddingTop="10dp"
                 android:textColor="@color/black"

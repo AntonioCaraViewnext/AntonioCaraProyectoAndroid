@@ -1,8 +1,8 @@
-package com.example.antoniocaraproyectoandroid.di
+package com.example.antoniocaraproyectoandroid.data.di
 
 import co.infinum.retromock.Retromock
 import com.example.antoniocaraproyectoandroid.data.network.RetromockService
-import com.example.antoniocaraproyectoandroid.di.NetworkModule.providerRetrofit
+import com.example.antoniocaraproyectoandroid.data.di.NetworkModule.providerRetrofit
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

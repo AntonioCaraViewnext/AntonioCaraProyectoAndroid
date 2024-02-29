@@ -3,8 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".smartsolarfragments.DetallesFragment"
+    tools:context=".ui.smartsolarfragments.DetallesFragment"
     android:paddingTop="20dp"
+    android:windowSoftInputMode="stateVisible|adjustResize"
     >
 
     <LinearLayout
@@ -127,12 +128,7 @@
                 android:textSize="18sp"
                 android:textColor="@color/black"
                 />
-            <View
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:background="@color/gray" />
+
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -140,18 +136,27 @@
             android:orientation="vertical"
             android:paddingTop="10dp"
             >
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@color/gray" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/darkGray"
                 android:text="@string/smart_solar_detalles_potencia_de_instalacion"
                 />
-            <TextView
+            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="5kWp"
                 android:layout_marginTop="5dp"
                 android:textSize="18sp"
+                android:background="@null"
                 android:textColor="@color/black"
                 />
             <View

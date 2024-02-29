@@ -1,13 +1,14 @@
-package com.example.antoniocaraproyectoandroid
+package com.example.antoniocaraproyectoandroid.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import com.example.antoniocaraproyectoandroid.R
 import com.example.antoniocaraproyectoandroid.databinding.ActivitySmartSolarBinding
-import com.example.antoniocaraproyectoandroid.smartsolarfragments.DetallesFragment
-import com.example.antoniocaraproyectoandroid.smartsolarfragments.EnergiaFragment
-import com.example.antoniocaraproyectoandroid.smartsolarfragments.InstalacionFragment
+import com.example.antoniocaraproyectoandroid.ui.smartsolarfragments.DetallesFragment
+import com.example.antoniocaraproyectoandroid.ui.smartsolarfragments.EnergiaFragment
+import com.example.antoniocaraproyectoandroid.ui.smartsolarfragments.InstalacionFragment
 import com.google.android.material.tabs.TabLayout
 
 class SmartSolarActivity : AppCompatActivity() {
@@ -18,7 +19,8 @@ class SmartSolarActivity : AppCompatActivity() {
         binding = ActivitySmartSolarBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportFragmentManager.beginTransaction().add(binding.fragmentContainer.id,InstalacionFragment.newInstance("","")).commit()
+        supportFragmentManager.beginTransaction().add(binding.fragmentContainer.id,
+            InstalacionFragment.newInstance("","")).commit()
 
         val tvTituloActivity: TextView = findViewById(R.id.tvTituloActivity)
         tvTituloActivity.text = resources.getText(R.string.smart_solar)

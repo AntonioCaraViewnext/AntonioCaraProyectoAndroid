@@ -1,4 +1,4 @@
-package com.example.antoniocaraproyectoandroid.di
+package com.example.antoniocaraproyectoandroid.data.di
 
 import android.app.Application
 import android.content.Context

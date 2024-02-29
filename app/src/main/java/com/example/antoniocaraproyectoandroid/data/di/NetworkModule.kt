@@ -1,4 +1,4 @@
-package com.example.antoniocaraproyectoandroid.di
+package com.example.antoniocaraproyectoandroid.data.di
 
 import com.example.antoniocaraproyectoandroid.data.network.FacturaApiClient
 import com.google.gson.GsonBuilder

@@ -1,8 +1,9 @@
-package com.example.antoniocaraproyectoandroid
+package com.example.antoniocaraproyectoandroid.ui
 
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.DatePickerDialog
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -14,6 +15,7 @@ import android.widget.SeekBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
+import com.example.antoniocaraproyectoandroid.R
 import com.example.antoniocaraproyectoandroid.databinding.ActivityFiltrosBinding
 import java.util.Calendar
 
@@ -46,40 +48,7 @@ class FiltrosActivity : AppCompatActivity() {
         sharedpreferences = getSharedPreferences("filtros", MODE_PRIVATE)
 
         imCorner.setOnClickListener {
-            val intent = Intent(it.context, MainActivity::class.java)
-            intent.putExtra("importe", sharedpreferences.getInt("importe", 300))
-
-            //Guardamos en un intent el String de los checkbox
-            for (cb in checkboxList) {
-                if (sharedpreferences.getBoolean(cb.resources.getResourceEntryName(cb.id), true)) {
-                    intent.putExtra(
-                        cb.resources.getResourceEntryName(cb.id) + "String",
-                        cb.text.toString()
-                    )
-                } else {
-                    intent.putExtra(cb.resources.getResourceEntryName(cb.id) + "String", " ")
-                }
-            }
-
-            intent.putExtra("cbPagada", sharedpreferences.getBoolean("cbPagada", true))
-            intent.putExtra("cbAnuladas", sharedpreferences.getBoolean("cbAnuladas", true))
-            intent.putExtra("cbCuotaFija", sharedpreferences.getBoolean("cbCuotaFija", true))
-            intent.putExtra("cbPendientePago", sharedpreferences.getBoolean("cbPendientePago", true))
-            intent.putExtra("cbPlanPago", sharedpreferences.getBoolean("cbPlanPago", true))
-            intent.putExtra(
-                "btnHasta",
-                sharedpreferences.getString("btnHasta",
-                    resources.getString(R.string.filtros_dia_mes_anio)
-                )
-            )
-            intent.putExtra(
-                "btnDesde",
-                sharedpreferences.getString("btnDesde",
-                    resources.getString(R.string.filtros_dia_mes_anio)
-                )
-            )
-            setResult(Activity.RESULT_OK, intent)
-            finish()
+            regresarAFacturas(it.context,checkboxList)
         }
 
         val skImporte: SeekBar = binding.skImporte
@@ -129,6 +98,7 @@ class FiltrosActivity : AppCompatActivity() {
             sharedpreferences.edit { putString("btnDesde", btnDesde.text.toString()) }
             sharedpreferences.edit { putString("btnHasta", btnHasta.text.toString()) }
 
+            regresarAFacturas(it.context,checkboxList)
         }
 
         btnEliminar.setOnClickListener {
@@ -193,8 +163,46 @@ class FiltrosActivity : AppCompatActivity() {
                 val textoImporte = skImporte.progress.toString() + "€"
                 tvImporte.text = textoImporte
             }
-
         })
+
+    }
+
+
+    private fun regresarAFacturas(context: Context?,checkboxList: List<CheckBox>) {
+        val intent = Intent(context, MainActivity::class.java)
+        intent.putExtra("importe", sharedpreferences.getInt("importe", 300))
+
+        //Guardamos en un intent el String de los checkbox
+        for (cb in checkboxList) {
+            if (sharedpreferences.getBoolean(cb.resources.getResourceEntryName(cb.id), true)) {
+                intent.putExtra(
+                    cb.resources.getResourceEntryName(cb.id) + "String",
+                    cb.text.toString()
+                )
+            } else {
+                intent.putExtra(cb.resources.getResourceEntryName(cb.id) + "String", " ")
+            }
+        }
+
+        intent.putExtra("cbPagada", sharedpreferences.getBoolean("cbPagada", true))
+        intent.putExtra("cbAnuladas", sharedpreferences.getBoolean("cbAnuladas", true))
+        intent.putExtra("cbCuotaFija", sharedpreferences.getBoolean("cbCuotaFija", true))
+        intent.putExtra("cbPendientePago", sharedpreferences.getBoolean("cbPendientePago", true))
+        intent.putExtra("cbPlanPago", sharedpreferences.getBoolean("cbPlanPago", true))
+        intent.putExtra(
+            "btnHasta",
+            sharedpreferences.getString("btnHasta",
+                resources.getString(R.string.filtros_dia_mes_anio)
+            )
+        )
+        intent.putExtra(
+            "btnDesde",
+            sharedpreferences.getString("btnDesde",
+                resources.getString(R.string.filtros_dia_mes_anio)
+            )
+        )
+        setResult(Activity.RESULT_OK, intent)
+        finish()
     }
 
     @SuppressLint("CommitPrefEdits", "SetTextI18n")

@@ -1,4 +1,4 @@
-package com.example.antoniocaraproyectoandroid
+package com.example.antoniocaraproyectoandroid.ui
 
 import android.app.Activity
 import android.content.Context
@@ -13,7 +13,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.antoniocaraproyectoandroid.data.adapter.FacturaAdapter
+import com.example.antoniocaraproyectoandroid.R
+import com.example.antoniocaraproyectoandroid.ui.adapter.FacturaAdapter
 import com.example.antoniocaraproyectoandroid.databinding.ActivityFacturaBinding
 import com.example.antoniocaraproyectoandroid.ui.viewmodel.FacturaViewModel
 import dagger.hilt.android.AndroidEntryPoint

@@ -8,15 +8,20 @@ import javax.inject.Inject
 class GetFacturasFiltradasUseCase @Inject constructor(
     private val repository: FacturaRepository
 ){
-    suspend operator fun invoke(importe : Int?,listaCheckBoxMutalbe : MutableList<String?>,infoBtnDesde : String? ,infoBtnHasta : String?,switchRetrofit: Boolean):List<FacturaModel>{
+    suspend operator fun invoke(
+        importe: Int?,
+        listaCheckBoxMutalbe: MutableList<String?>,
+        infoBtnDesde: String?,
+        infoBtnHasta: String?,
+        switchRetrofit: Boolean):List<FacturaModel>{
         val facturas = repository.getAllFacturas(switchRetrofit)
         return if(facturas.isNotEmpty()){
             repository.nukeTable()
             repository.insertFactura(conversionModelEntity(facturas))
-            val facturasFiltradas = repository.filtros(importe,listaCheckBoxMutalbe,infoBtnDesde,infoBtnHasta).toList()
+            val facturasFiltradas = repository.filtrarFacturas(importe,listaCheckBoxMutalbe,infoBtnDesde,infoBtnHasta).toList()
             conversionEntityModel(facturasFiltradas)
         }else{
-            val conversorLista = conversionEntityModel(repository.filtros(importe, listaCheckBoxMutalbe,infoBtnDesde,infoBtnHasta).toList())
+            val conversorLista = conversionEntityModel(repository.filtrarFacturas(importe, listaCheckBoxMutalbe,infoBtnDesde,infoBtnHasta).toList())
             conversorLista
         }
     }
