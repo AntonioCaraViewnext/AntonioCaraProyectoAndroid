@@ -46,7 +46,7 @@ class FacturaAdapter : RecyclerView.Adapter<FacturaAdapter.ViewHolder>() {
             }else{
                 pendiente.text = ""
             }
-            coste.text = facturaModel.importeOrdenacion.toString()
+            coste.text = facturaModel.importeOrdenacion.toString()+"€"
 
             //Alerta de dialogo indicando que no está disponible la función
             itemView.setOnClickListener(View.OnClickListener {

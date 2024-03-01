@@ -27,7 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
-                android:textSize="25dp"
+                android:textSize="20dp"
                 android:textColor="@color/black"
                 />
             <TextView
@@ -50,7 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="appp"
-                android:textSize="25dp"
+                android:textSize="20dp"
                 android:paddingTop="10dp"
                 android:textColor="@color/black"
                 />
